@@ -4,15 +4,15 @@ services:
   jupyter:
     container_name: jn
     build:
-      context: ./
-      dockerfile: ./Dockerfile
+      context: ${PDIR}/
+      dockerfile: ${PDIR}/Dockerfile
     restart: always
     stdin_open: true
     ports:
       - 8888:8888
     volumes:
-        - ./jupyter:${main_dir}
+        - ${PDIR/jupyter:${main_dir}
     env_file:
-      - ./jupyter/conf/secrets.env.sample
+      - ${PDIR}/jupyter/conf/secrets.env.sample
     entrypoint: /usr/bin/env bash
     command: setup.sh
